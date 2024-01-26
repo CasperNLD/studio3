@@ -26,7 +26,7 @@ public class BrowserUtilTest
 		{
 			for (BrowserInfo info : browsers)
 			{
-				if (info.getName().equals("Internet Explorer"))
+				if (info.getName().equals("Microsoft Edge"))
 				{
 					return;
 				}

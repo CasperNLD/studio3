@@ -4,6 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src/"/>
 	<classpathentry exported="true" kind="lib" path="uuid.jar"/>
-	<classpathentry exported="true" kind="lib" path="WinRegistry-4.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="jna-platform-5.14.0.jar" sourcepath="C:/Users/rouboc/Eclipse-IDE/dropins/jna-platform-5.14.0-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="jna-5.14.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

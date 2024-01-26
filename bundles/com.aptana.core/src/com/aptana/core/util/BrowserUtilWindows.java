@@ -7,18 +7,19 @@
  */
 package com.aptana.core.util;
 
+import static com.sun.jna.platform.win32.WinReg.HKEY_LOCAL_MACHINE;
+import static com.sun.jna.platform.win32.WinReg.HKEY_CURRENT_USER;
+import com.sun.jna.platform.win32.WinReg.HKEY;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import at.jta.Key;
-import at.jta.RegistryErrorException;
-import at.jta.Regor;
-
 import com.aptana.core.CorePlugin;
 import com.aptana.core.logging.IdeLog;
+import com.sun.jna.platform.win32.Advapi32Util;
 
 /**
  * Utilities for getting browser information on widows.
@@ -28,39 +29,6 @@ import com.aptana.core.logging.IdeLog;
 public class BrowserUtilWindows extends BrowserUtilNull
 {
 
-	/**
-	 * Windows-only. Utility method to read the default value from a key in the registry.
-	 */
-	private static String readKeyValue(Regor regor, Key key, String path) throws RegistryErrorException
-	{
-		return readKeyValue(regor, key, path, "");// default value of key //$NON-NLS-1$
-	}
-
-	/**
-	 * Windows-only. Utility method to read the default value from a key in the registry.
-	 */
-	private static String readKeyValue(Regor regor, Key key, String path, String valueName)
-			throws RegistryErrorException
-	{
-		Key openKey = regor.openKey(key, path, Regor.KEY_READ);
-		if (openKey != null)
-		{
-			try
-			{
-				byte buf[] = regor.readValue(openKey, valueName);
-				if (buf != null)
-				{
-					return Regor.parseValue(buf);
-				}
-			}
-			finally
-			{
-				regor.closeKey(openKey);
-			}
-
-		}
-		return null;
-	}
 
 	/**
 	 * This method tries to discover all the browsers installed in the computer.
@@ -74,43 +42,34 @@ public class BrowserUtilWindows extends BrowserUtilNull
 		{
 			// On Windows, the available browsers should be found in the registry.
 			// See: http://stackoverflow.com/questions/2370732/how-to-find-all-the-browsers-installed-on-a-machine
-			Regor regor = new Regor();
 
 			for (String path : new String[] { "Software\\Clients\\StartMenuInternet", //$NON-NLS-1$
 					"Software\\WOW6432Node\\Clients\\StartMenuInternet" }) //$NON-NLS-1$ 
 			{
-				Key key = regor.openKey(Regor.HKEY_LOCAL_MACHINE, path, Regor.KEY_READ);
-				if (key != null)
-				{
-					try
-					{
-						@SuppressWarnings("unchecked")
-						List<String> keys = regor.listKeys(key);
-						if (keys != null)
-						{
-							for (String s : keys)
-							{
-								String browserName = readKeyValue(regor, key, s);
-								String browserLocation = readKeyValue(regor, key, s + "\\shell\\open\\command"); //$NON-NLS-1$
+				String[] keys = Advapi32Util.registryGetKeys(HKEY_LOCAL_MACHINE,path);
 
-								if (browserName != null && browserLocation != null)
-								{
-									// Only add it if it really exists.
-									if (browserLocation.startsWith("\"") && browserLocation.endsWith("\"")) //$NON-NLS-1$ //$NON-NLS-2$
-									{
-										browserLocation = browserLocation.substring(1, browserLocation.length() - 1);
-									}
-									if (new File(browserLocation).exists())
-									{
-										browsers.put(browserLocation, new BrowserInfo(browserName, browserLocation));
-									}
-								}
+				if (keys != null && keys.length > 0)
+				{
+					for (String s : keys)
+					{
+						String browserName = Advapi32Util.registryGetStringValue(HKEY_LOCAL_MACHINE,
+					             path + "\\" + s, "");
+					    String pathCommand =  path + "\\" + s + "\\shell\\open\\command";
+						String browserLocation = Advapi32Util.registryGetStringValue(HKEY_LOCAL_MACHINE,
+								pathCommand, "");
+
+						if (browserName != null && browserLocation != null)
+						{
+							// Only add it if it really exists.
+							if (browserLocation.startsWith("\"") && browserLocation.endsWith("\"")) //$NON-NLS-1$ //$NON-NLS-2$
+							{
+								browserLocation = browserLocation.substring(1, browserLocation.length() - 1);
+							}
+							if (new File(browserLocation).exists())
+							{
+								browsers.put(browserLocation, new BrowserInfo(browserName, browserLocation));
 							}
 						}
-					}
-					finally
-					{
-						regor.closeKey(key);
 					}
 				}
 			}
@@ -151,6 +110,10 @@ public class BrowserUtilWindows extends BrowserUtilNull
 		{
 			return getFirefoxVersion();
 		}
+		if (lowerName.contains("microsoft edge")) //$NON-NLS-1$
+		{
+			throw new IllegalArgumentException("TODO: find edge version");//TODO
+		}
 
 		return null;
 	}
@@ -162,18 +125,16 @@ public class BrowserUtilWindows extends BrowserUtilNull
 
 	private String getVersionFrom(String[] paths, String keyValue)
 	{
-		return getVersionFrom(paths, keyValue, Regor.HKEY_LOCAL_MACHINE);
+		return getVersionFrom(paths, keyValue, HKEY_LOCAL_MACHINE);
 	}
 
-	private String getVersionFrom(String[] paths, String keyValue, Key key)
+	private String getVersionFrom(String[] paths, String keyValue, HKEY key)
 	{
 		try
 		{
-			Regor regor = new Regor();
-
 			for (String path : paths)
 			{
-				String version = readKeyValue(regor, key, path, keyValue);
+				String version = Advapi32Util.registryGetStringValue(key, path, keyValue);
 				if (!StringUtil.isEmpty(version))
 				{
 					return version;
@@ -210,7 +171,7 @@ public class BrowserUtilWindows extends BrowserUtilNull
 		String[] paths = new String[] { "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome",
 				"Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome" }; //$NON-NLS-1$ //$NON-NLS-2$
 		String keyValue = "Version"; //$NON-NLS-1$ 
-		String version = getVersionFrom(paths, keyValue, Regor.HKEY_CURRENT_USER);
+		String version = getVersionFrom(paths, keyValue, HKEY_CURRENT_USER);
 		if (StringUtil.isEmpty(version))
 		{
 			return getVersionFrom(paths, keyValue);
@@ -224,46 +185,47 @@ public class BrowserUtilWindows extends BrowserUtilNull
 	 */
 	private String getOperaVersion()
 	{
+		
 		try
 		{
-			Regor regor = new Regor();
+			throw new IllegalArgumentException("TODO: find opera version");//TODO
 
-			for (String path : new String[] { "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\", //$NON-NLS-1$
-					"Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" }) //$NON-NLS-1$
-			{
-				Key key = regor.openKey(Regor.HKEY_LOCAL_MACHINE, path, Regor.KEY_READ);
-				if (key != null)
-				{
-					try
-					{
-						@SuppressWarnings("unchecked")
-						List<String> keys = regor.listKeys(key);
-						if (keys != null)
-						{
-							for (String s : keys)
-							{
-								if (s.toLowerCase().startsWith("opera")) { //$NON-NLS-1$
-									// Additional validation: check publisher.
-									String publisher = readKeyValue(regor, key, s, "Publisher"); //$NON-NLS-1$
-									if (!StringUtil.isEmpty(publisher)
-											&& publisher.toLowerCase().startsWith("opera software")) //$NON-NLS-1$
-									{
-										String version = readKeyValue(regor, key, s, "DisplayVersion"); //$NON-NLS-1$
-										if (!StringUtil.isEmpty(version))
-										{
-											return version;
-										}
-									}
-								}
-							}
-						}
-					}
-					finally
-					{
-						regor.closeKey(key);
-					}
-				}
-			}
+//			for (String path : new String[] { "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\", //$NON-NLS-1$
+//					"Software\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" }) //$NON-NLS-1$
+//			{
+//				Key key = regor.openKey(Regor.HKEY_LOCAL_MACHINE, path, Regor.KEY_READ);
+//				if (key != null)
+//				{
+//					try
+//					{
+//						@SuppressWarnings("unchecked")
+//						List<String> keys = regor.listKeys(key);
+//						if (keys != null)
+//						{
+//							for (String s : keys)
+//							{
+//								if (s.toLowerCase().startsWith("opera")) { //$NON-NLS-1$
+//									// Additional validation: check publisher.
+//									String publisher = readKeyValue(regor, key, s, "Publisher"); //$NON-NLS-1$
+//									if (!StringUtil.isEmpty(publisher)
+//											&& publisher.toLowerCase().startsWith("opera software")) //$NON-NLS-1$
+//									{
+//										String version = readKeyValue(regor, key, s, "DisplayVersion"); //$NON-NLS-1$
+//										if (!StringUtil.isEmpty(version))
+//										{
+//											return version;
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//					finally
+//					{
+//						regor.closeKey(key);
+//					}
+//				}
+//			}
 		}
 		catch (Throwable e)
 		{
