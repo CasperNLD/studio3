@@ -11,7 +11,7 @@ Require-Bundle: com.aptana.core,
  org.eclipse.ui.ide,
  com.aptana.ui,
  com.aptana.deploy.epl;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.deploy.ui,
  com.aptana.deploy.ui.wizard

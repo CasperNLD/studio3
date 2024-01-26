@@ -16,7 +16,7 @@ Require-Bundle: com.aptana.jetty.util.epl,
  com.aptana.configurations,
  com.aptana.portal.ui,
  com.aptana.scripting
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-LazyStart: true
 Bundle-Localization: plugin
 Export-Package: com.aptana.samples.ui.portal.actionController,

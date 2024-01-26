@@ -4,7 +4,7 @@ Bundle-Name: CSS Validator
 Bundle-SymbolicName: org.w3c.css
 Bundle-Version: 1.0.0
 Bundle-Vendor: W3C
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.apache.velocity;bundle-version="1.0.0"
 Export-Package: org.w3c.css.css,
  org.w3c.css.error,

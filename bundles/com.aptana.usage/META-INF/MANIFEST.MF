@@ -10,7 +10,7 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.jetty.util.epl,
  com.aptana.core,
  com.aptana.libraries
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.usage,
  com.aptana.usage.preferences

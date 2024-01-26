@@ -8,5 +8,5 @@ Fragment-Host: com.aptana.editor.html.formatter;bundle-version="3.0.0"
 Require-Bundle: org.junit;bundle-version="4.0.0",
  com.aptana.formatter.epl,
  com.aptana.testing.utils
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: com.aptana.editor.html.formatter.tests

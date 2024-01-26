@@ -26,4 +26,4 @@ Export-Package: com.aptana.debug.ui;
    org.eclipse.ui",
  com.aptana.debug.ui.console,
  com.aptana.debug.ui.internal;x-friends:="com.aptana.js.debug.ui"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

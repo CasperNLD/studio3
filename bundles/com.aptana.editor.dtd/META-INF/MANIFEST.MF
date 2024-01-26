@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.theme,
  com.aptana.editor.common,
  org.eclipse.compare
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.editor.dtd,
  com.aptana.editor.dtd.text.rules;x-friends:="com.aptana.editor.xml"

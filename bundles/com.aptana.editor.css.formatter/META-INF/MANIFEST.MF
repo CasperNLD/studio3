@@ -15,7 +15,7 @@ Require-Bundle: com.aptana.core,
  com.aptana.formatter.ui.epl,
  com.aptana.editor.common,
  com.aptana.editor.css
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.css.formatter

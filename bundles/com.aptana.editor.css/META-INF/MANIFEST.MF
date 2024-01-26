@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui.views,
  com.aptana.ui,
  com.aptana.index.core.ui;bundle-version="3.0.0",
  com.aptana.editor.common
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.css,

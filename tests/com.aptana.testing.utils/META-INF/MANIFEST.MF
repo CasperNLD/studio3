@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: com.aptana.testing.utils
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.core.resources,
  com.aptana.core,
@@ -24,13 +24,41 @@ Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  com.aptana.scripting;bundle-version="3.1.0",
  com.aptana.testing.libraries;bundle-version="1.0.0",
  com.aptana.editor.css;bundle-version="3.1.0"
-Export-Package: com.aptana.buildpath.core.tests,
- com.aptana.core.io.tests,
- com.aptana.core.tests,
- com.aptana.editor.common.formatting.tests,
- com.aptana.editor.common.scripting.tests,
- com.aptana.editor.common.tests,
- com.aptana.editor.common.tests.util,
- com.aptana.editor.css.tests,
- com.aptana.editor.epl.tests,
- com.aptana.testing.utils
+Export-Package: com.aptana.buildpath.core.tests;uses:="com.aptana.parsing,com.aptana.core.build",
+ com.aptana.core.io.tests;uses:="org.eclipse.core.runtime,com.aptana.ide.core.io",
+ com.aptana.editor.common.formatting.tests;uses:="com.aptana.formatter",
+ com.aptana.editor.common.scripting.tests;uses:="org.eclipse.ui.texteditor,org.eclipse.swt.custom,org.eclipse.core.resources",
+ com.aptana.editor.common.tests;
+  uses:="org.eclipse.swt.events,
+   org.eclipse.jface.text.source,
+   org.eclipse.swt.graphics,
+   org.eclipse.jface.text,
+   org.eclipse.jface.viewers,
+   org.osgi.framework,
+   org.eclipse.jface.text.contentassist,
+   org.eclipse.ui,
+   org.eclipse.ui.texteditor,
+   com.aptana.scripting.model,
+   com.aptana.index.core,
+   org.eclipse.swt.custom,
+   com.aptana.editor.common,
+   org.eclipse.core.resources,
+   org.eclipse.core.filesystem,
+   org.eclipse.jface.text.rules",
+ com.aptana.editor.common.tests.util;uses:="org.eclipse.jface.text.contentassist,org.eclipse.swt.graphics,org.eclipse.jface.text",
+ com.aptana.editor.css.tests;
+  uses:="org.osgi.framework,
+   com.aptana.editor.css.contentassist,
+   com.aptana.index.core,
+   com.aptana.editor.common,
+   com.aptana.editor.common.tests",
+ com.aptana.editor.epl.tests;
+  uses:="org.eclipse.ui,
+   org.eclipse.ui.texteditor,
+   org.eclipse.core.runtime,
+   org.eclipse.jface.text.reconciler,
+   org.eclipse.jface.text.source,
+   org.eclipse.swt.widgets,
+   org.eclipse.jface.text,
+   org.eclipse.core.resources",
+ com.aptana.testing.utils;uses:="org.eclipse.core.runtime,org.eclipse.core.resources"

@@ -20,4 +20,7 @@
             id="org.eclipse.tm.internal.terminal.speedtest.SpeedTestConnector"
             name="Speed Test"/>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.applications">
+   </extension>
 </fragment>

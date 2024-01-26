@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.ui;bundle-version="3.0.0",
  com.aptana.editor.common;bundle-version="3.0.0",
  com.aptana.editor.dtd
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.formatter.ui.dialogFields,

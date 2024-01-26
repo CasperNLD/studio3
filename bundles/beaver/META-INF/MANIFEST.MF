@@ -7,13 +7,17 @@ Bundle-Activator: beaver.BeaverPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.ant;resolution:=optional
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: beaver,
- beaver.comp,
- beaver.comp.io,
- beaver.comp.run,
- beaver.comp.util,
- beaver.spec,
- beaver.spec.ast,
- beaver.spec.parser
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: beaver;uses:="org.osgi.framework,org.eclipse.core.runtime",
+ beaver.comp;
+  uses:="beaver.comp.util,
+   beaver.spec,
+   beaver.comp.io,
+   beaver.comp.run",
+ beaver.comp.io;uses:="beaver.comp.util",
+ beaver.comp.run;uses:="org.apache.tools.ant,beaver.comp.util,beaver.comp.io",
+ beaver.comp.util;uses:="beaver,beaver.comp.io",
+ beaver.spec;uses:="beaver.comp.util,beaver.spec.ast",
+ beaver.spec.ast;uses:="Rule,beaver",
+ beaver.spec.parser;uses:="beaver.comp.util,beaver"
 Bundle-Vendor: %providerName

@@ -10,7 +10,7 @@ Require-Bundle: com.aptana.core,
  com.aptana.core.io,
  org.eclipse.ui,
  com.aptana.theme
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.index.core.ui,
  com.aptana.index.core.ui.views

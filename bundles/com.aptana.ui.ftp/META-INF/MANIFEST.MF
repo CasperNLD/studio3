@@ -15,7 +15,7 @@ Require-Bundle: com.aptana.core,
  com.aptana.ui.io,
  com.aptana.theme,
  com.aptana.usage
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: com.aptana.ui.ftp.actions,

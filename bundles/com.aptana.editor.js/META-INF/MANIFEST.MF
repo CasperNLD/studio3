@@ -24,7 +24,7 @@ Require-Bundle: com.aptana.jetty.util.epl,
  com.aptana.index.core.ui,
  com.aptana.editor.common,
  com.aptana.build.ui
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.js,

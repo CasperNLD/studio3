@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.aptana.filesystem.http.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %providerName
 Fragment-Host: com.aptana.filesystem.http;bundle-version="3.0.0"
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.junit;bundle-version="4.8.0"
 Export-Package: com.aptana.filesystem.http.tests
 Bundle-ClassPath: .

@@ -16,7 +16,7 @@ Require-Bundle: com.aptana.core,
  com.aptana.theme,
  com.aptana.editor.common;visibility:=reexport,
  com.aptana.editor.dtd;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.xml,
  com.aptana.editor.xml.contentassist;x-friends:="com.aptana.editor.svg,com.appcelerator.titanium.alloy.ui",

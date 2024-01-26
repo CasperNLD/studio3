@@ -7,7 +7,7 @@ Bundle-Activator: com.aptana.deploy.epl.DeployEplPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.deploy.epl,
  com.aptana.deploy.wizard
