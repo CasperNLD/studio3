@@ -22,10 +22,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-<<<<<<< HEAD
-=======
 import org.junit.experimental.categories.Category;
->>>>>>> a3695a42df... test: remove performance tests
+
 
 public class StringUtilTest
 {
