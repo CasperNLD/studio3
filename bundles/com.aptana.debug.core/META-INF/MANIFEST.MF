@@ -23,4 +23,4 @@ Export-Package: com.aptana.debug.core;
  com.aptana.debug.core.internal;x-friends:="com.aptana.js.debug.core",
  com.aptana.debug.core.sourcelookup,
  com.aptana.debug.core.util;uses:="org.eclipse.core.runtime"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

@@ -12,5 +12,6 @@ Export-Package:
  ch.randelshofer.quaqua.util;x-friends:="com.aptana.core",
  com.aptana.plist,
  com.eaio.uuid
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-BundleShape: dir
+Automatic-Module-Name: com.aptana.libraries

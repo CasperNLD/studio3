@@ -5,5 +5,5 @@ Bundle-SymbolicName: com.aptana.webserver.core.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %Bundle-Vendor
 Fragment-Host: com.aptana.webserver.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit

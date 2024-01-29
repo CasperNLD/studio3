@@ -6,8 +6,9 @@ Bundle-Version: 3.0.3.qualifier
 Bundle-Activator: com.aptana.deploy.DeployPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: com.aptana.core;bundle-version="3.0.4",
- com.aptana.scripting
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ com.aptana.scripting,
+ org.eclipse.core.resources;bundle-version="3.13.800"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.deploy,
  com.aptana.deploy.preferences,

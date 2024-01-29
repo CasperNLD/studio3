@@ -5,6 +5,6 @@ Bundle-SymbolicName: com.aptana.samples.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Aptana
 Fragment-Host: com.aptana.samples
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit
 Export-Package: com.aptana.samples.tests

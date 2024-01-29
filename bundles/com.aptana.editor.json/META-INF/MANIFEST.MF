@@ -13,5 +13,5 @@ Require-Bundle: org.eclipse.compare,
  com.aptana.editor.common,
  com.aptana.formatter.epl;bundle-version="3.2.0",
  com.aptana.formatter.ui.epl
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

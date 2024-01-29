@@ -7,11 +7,13 @@ Bundle-Activator: com.aptana.editor.html.core.HTMLCorePlugin
 Bundle-Vendor: %providerName
 Require-Bundle: com.aptana.core,
  beaver,
- com.aptana.parsing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ com.aptana.parsing,
+ org.eclipse.core.resources;bundle-version="3.13.800"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.html.core,
  com.aptana.editor.html.core.preferences,
  com.aptana.editor.html.parsing,
  com.aptana.editor.html.parsing.ast
+Automatic-Module-Name: com.aptana.editor.html.core

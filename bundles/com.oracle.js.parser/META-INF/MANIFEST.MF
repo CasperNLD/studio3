@@ -4,7 +4,7 @@ Bundle-Name: Parser
 Bundle-SymbolicName: com.oracle.js.parser
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ORACLE
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.oracle.js.parser,
  com.oracle.js.parser.ir,
  com.oracle.js.parser.ir.visitor

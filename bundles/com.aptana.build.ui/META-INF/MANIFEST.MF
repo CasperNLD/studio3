@@ -5,12 +5,13 @@ Bundle-SymbolicName: com.aptana.build.ui;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: com.aptana.build.ui.BuildUIPlugin
 Bundle-Vendor: %Bundle-Vendor
-Require-Bundle: org.eclipse.core.runtime,
- com.aptana.buildpath.core;visibility:=reexport,
+Require-Bundle: com.aptana.buildpath.core;visibility:=reexport,
  com.aptana.core,
- org.eclipse.ui,
- com.aptana.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ com.aptana.ui,
+ org.eclipse.ui.workbench;bundle-version="3.120.0",
+ org.eclipse.jface;bundle-version="3.21.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.build.ui,
  com.aptana.build.ui.preferences
+Automatic-Module-Name: com.aptana.build.ui

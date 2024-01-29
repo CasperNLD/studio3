@@ -8,9 +8,10 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: com.aptana.core,
  com.aptana.scripting,
- com.aptana.projects
+ com.aptana.projects,
+ org.eclipse.core.resources;bundle-version="3.13.800"
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.samples,
  com.aptana.samples.handlers,
  com.aptana.samples.model
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

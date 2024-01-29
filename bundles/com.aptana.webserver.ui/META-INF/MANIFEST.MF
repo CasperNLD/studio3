@@ -13,7 +13,7 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.webserver.core,
  com.aptana.theme,
  org.eclipse.core.expressions
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Eclipse-LazyStart: true
 Export-Package: com.aptana.webserver.ui,

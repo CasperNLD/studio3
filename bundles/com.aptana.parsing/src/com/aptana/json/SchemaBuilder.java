@@ -10,7 +10,6 @@ package com.aptana.json;
 /**
  * SchemaBuilder
  */
-@SuppressWarnings("nls")
 public class SchemaBuilder extends SchemaReader
 {
 	private static final String SCHEMA_NAME = "Schema Schema";

@@ -15,6 +15,7 @@ import org.eclipse.jface.preference.PreferenceNode;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.custom.BusyIndicator;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IViewActionDelegate;
 import org.eclipse.ui.IViewPart;
 

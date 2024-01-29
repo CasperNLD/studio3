@@ -4,7 +4,7 @@ Bundle-Name: Velocity
 Bundle-SymbolicName: org.apache.velocity
 Bundle-Version: 1.0.0
 Bundle-Vendor: Apache
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.apache.commons.collections,
  org.apache.commons.collections.iterators,
  org.apache.commons.collections.map,

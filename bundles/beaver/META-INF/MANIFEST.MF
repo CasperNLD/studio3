@@ -7,7 +7,7 @@ Bundle-Activator: beaver.BeaverPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.apache.ant;resolution:=optional
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: beaver;uses:="org.osgi.framework,org.eclipse.core.runtime",
  beaver.comp;
   uses:="beaver.comp.util,
@@ -21,3 +21,4 @@ Export-Package: beaver;uses:="org.osgi.framework,org.eclipse.core.runtime",
  beaver.spec.ast;uses:="Rule,beaver",
  beaver.spec.parser;uses:="beaver.comp.util,beaver"
 Bundle-Vendor: %providerName
+Automatic-Module-Name: beaver

@@ -16,6 +16,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.views,
  com.aptana.ui;bundle-version="3.0.0",
  com.aptana.theme
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.scripting.ui

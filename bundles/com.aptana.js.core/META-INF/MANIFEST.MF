@@ -14,8 +14,9 @@ Require-Bundle: com.aptana.core;bundle-version="3.3.0";visibility:=reexport,
  org.eclipse.text;visibility:=reexport,
  com.aptana.core.io,
  org.eclipse.core.net,
- com.oracle.js.parser;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+ com.oracle.js.parser;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.13.800"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.js.core,
  com.aptana.js.core.build,

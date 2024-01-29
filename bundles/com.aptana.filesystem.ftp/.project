@@ -3,6 +3,8 @@
 	<name>com.aptana.filesystem.ftp</name>
 	<comment></comment>
 	<projects>
+		<project>com.aptana.ide.libraries.subscription.bundles</project>
+		<project>com.aptana.ide.libraries.subscription.releng</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

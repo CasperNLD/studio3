@@ -102,7 +102,7 @@ Export-Package: .,
  org.jruby.util.func,
  org.jruby.util.io,
  org.jruby.util.unsafe
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-BuddyPolicy: global
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.4.0"
 Eclipse-BundleShape: dir

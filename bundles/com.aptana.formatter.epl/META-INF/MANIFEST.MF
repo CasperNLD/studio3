@@ -5,15 +5,19 @@ Bundle-SymbolicName: com.aptana.formatter.epl;singleton:=true
 Bundle-Version: 3.2.0.qualifier
 Bundle-Activator: com.aptana.formatter.epl.FormatterPlugin
 Bundle-Vendor: %providerName
-Require-Bundle: com.aptana.core;bundle-version="3.0.0",
+Require-Bundle: com.aptana.core,
  com.aptana.parsing,
+ com.aptana.ui.epl,
+ com.aptana.ui,
+ com.aptana.js.debug.core,
  org.eclipse.ui.editors,
  org.eclipse.ui.workbench.texteditor;visibility:=reexport,
  org.eclipse.compare,
- com.aptana.ui.epl,
- com.aptana.ui;bundle-version="3.0.0",
- com.aptana.js.debug.core
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.jface,
+ org.eclipse.text;bundle-version="3.10.300",
+ org.eclipse.jface.text;bundle-version="3.16.400",
+ org.eclipse.ui.workbench;bundle-version="3.120.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.formatter,
  com.aptana.formatter.epl,
@@ -22,3 +26,4 @@ Export-Package: com.aptana.formatter,
  com.aptana.formatter.preferences.profile,
  com.aptana.formatter.ui,
  com.aptana.formatter.util
+Automatic-Module-Name: com.aptana.formatter.epl

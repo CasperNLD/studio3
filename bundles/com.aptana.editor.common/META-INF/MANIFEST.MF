@@ -7,13 +7,11 @@ Bundle-Activator: com.aptana.editor.common.CommonEditorPlugin
 Bundle-Vendor: %providerName
 Require-Bundle: org.jruby,
  com.aptana.core;bundle-version="[3.0.4,4.0.0)",
- com.aptana.buildpath.core;visibility:=reexport,
  com.aptana.scripting,
  org.eclipse.ui.editors;visibility:=reexport,
  org.eclipse.ui.console,
  org.eclipse.ui.views,
  org.eclipse.compare,
- org.eclipse.ui.workbench.texteditor,
  org.eclipse.ui.ide,
  com.aptana.usage;bundle-version="4.0.0",
  com.aptana.ui.epl,
@@ -24,8 +22,12 @@ Require-Bundle: org.jruby,
  com.aptana.formatter.epl,
  com.aptana.editor.epl;visibility:=reexport,
  com.aptana.build.ui,
- org.eclipse.ui.navigator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.ui.navigator,
+ org.eclipse.jface;bundle-version="3.21.0";visibility:=reexport,
+ org.eclipse.core.resources;bundle-version="3.13.800";visibility:=reexport,
+ org.eclipse.jface.text;bundle-version="3.16.400";visibility:=reexport,
+ org.eclipse.ui.workbench;bundle-version="3.120.0";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.editor.common,

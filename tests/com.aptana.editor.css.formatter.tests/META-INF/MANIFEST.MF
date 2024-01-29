@@ -7,5 +7,5 @@ Bundle-Vendor: %providerName
 Fragment-Host: com.aptana.editor.css.formatter;bundle-version="3.0.0"
 Require-Bundle: org.junit,
  com.aptana.testing.utils
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.aptana.editor.css.formatter.tests;uses:="com.aptana.editor.common.formatting,junit.framework"

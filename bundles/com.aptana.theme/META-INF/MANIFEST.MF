@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.ui.css.swt.theme;visibility:=reexport,
  org.eclipse.e4.ui.model.workbench;visibility:=reexport,
  org.eclipse.e4.ui.workbench.swt;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.theme,
  com.aptana.theme.preferences

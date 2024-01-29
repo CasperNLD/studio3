@@ -5,4 +5,4 @@ Bundle-SymbolicName: json.simple
 Bundle-Version: 1.1.0
 Export-Package: org.json.simple,
  org.json.simple.parser
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

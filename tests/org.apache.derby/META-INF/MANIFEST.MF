@@ -116,4 +116,4 @@ Export-Package: org.apache.derby.authentication,
  org.apache.derby.shared.common.sanity,
  org.apache.derby.tools,
  org.apache.derby.vti
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

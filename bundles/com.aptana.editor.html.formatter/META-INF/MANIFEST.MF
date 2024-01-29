@@ -19,6 +19,6 @@ Require-Bundle: org.eclipse.ui,
  com.aptana.editor.html,
  com.aptana.core;bundle-version="3.0.0",
  beaver
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.editor.html.formatter

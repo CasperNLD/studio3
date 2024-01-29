@@ -21,5 +21,5 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.ui.epl,
  com.aptana.editor.common,
  com.aptana.editor.js
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy

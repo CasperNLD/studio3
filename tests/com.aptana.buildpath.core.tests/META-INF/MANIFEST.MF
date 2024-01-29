@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.aptana.buildpath.core.tests;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Appcelerator, Inc.
 Fragment-Host: com.aptana.buildpath.core;bundle-version="3.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit,
  com.aptana.testing.mocks,
  com.aptana.testing.utils

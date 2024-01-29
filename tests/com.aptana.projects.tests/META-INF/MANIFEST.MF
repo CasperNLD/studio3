@@ -5,5 +5,5 @@ Bundle-SymbolicName: com.aptana.projects.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: APTANA
 Fragment-Host: com.aptana.projects
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit;bundle-version="4.8.0"

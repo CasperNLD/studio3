@@ -5,7 +5,7 @@ Bundle-SymbolicName: com.aptana.deploy.ftp.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %Bundle-Vendor
 Fragment-Host: com.aptana.deploy.ftp
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Import-Package: com.aptana.filesystem.ftp
 Export-Package: com.aptana.deploy.ftp.tests
 Require-Bundle: org.junit;bundle-version="4.0.0"

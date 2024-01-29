@@ -19,8 +19,11 @@ Require-Bundle: com.aptana.core;bundle-version="3.0.4",
  com.aptana.theme,
  com.aptana.console,
  com.aptana.terminal,
- com.aptana.ui.epl
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ com.aptana.ui.epl,
+ org.eclipse.jface;bundle-version="3.21.0";visibility:=reexport,
+ org.eclipse.ui.workbench;bundle-version="3.120.0";visibility:=reexport,
+ org.eclipse.jface.text;bundle-version="3.16.400";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Export-Package: com.aptana.git.ui,

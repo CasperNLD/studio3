@@ -8,19 +8,17 @@ Bundle-Vendor: %providerName
 Require-Bundle: com.aptana.core;bundle-version="3.0.4",
  com.aptana.usage;bundle-version="4.0.0",
  com.aptana.buildpath.core,
- com.aptana.index.core,
- org.eclipse.jface.text;visibility:=reexport,
- org.eclipse.ui;visibility:=reexport,
+ com.aptana.ui.epl,
+ com.aptana.usage,
  org.eclipse.help.ui,
  org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
  org.eclipse.ui.console,
  org.eclipse.search,
  org.eclipse.debug.ui,
- com.aptana.ui.epl,
- com.aptana.usage,
- org.eclipse.ui.browser
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.ui.browser,
+ org.eclipse.jface.text;bundle-version="3.16.400"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.ui,
  com.aptana.ui.actions,

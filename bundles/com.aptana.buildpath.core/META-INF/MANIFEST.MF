@@ -9,8 +9,9 @@ Require-Bundle: com.aptana.core,
  com.aptana.index.core;visibility:=reexport,
  com.aptana.parsing;visibility:=reexport,
  com.aptana.core.epl;bundle-version="3.0.0",
- org.eclipse.text
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.text,
+ org.eclipse.core.resources;bundle-version="3.13.800"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.buildpath.core,
  com.aptana.core.build

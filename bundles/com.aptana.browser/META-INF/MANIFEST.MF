@@ -8,7 +8,7 @@ Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: com.aptana.core,
  org.eclipse.ui,
  org.eclipse.ui.browser;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.browser,
  com.aptana.browser.parts,

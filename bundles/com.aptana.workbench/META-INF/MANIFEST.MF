@@ -28,7 +28,7 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.editor.common,
  com.aptana.explorer,
  com.aptana.formatter.ui.epl
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.snippets.ui.views,
  com.aptana.workbench.commands,

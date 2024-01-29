@@ -9,7 +9,7 @@ Require-Bundle: com.aptana.core;bundle-version="3.0.4",
  com.aptana.core.io,
  com.aptana.webserver.core;visibility:=reexport,
  com.aptana.debug.core;visibility:=reexport
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.js.debug.core,
  com.aptana.js.debug.core.internal,

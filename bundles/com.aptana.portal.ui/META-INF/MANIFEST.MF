@@ -18,8 +18,10 @@ Require-Bundle: com.aptana.jetty.util.epl,
  com.aptana.explorer,
  com.aptana.browser;visibility:=reexport,
  com.aptana.projects,
- org.eclipse.e4.ui.workbench;resolution:=optional
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.e4.ui.workbench;resolution:=optional,
+ org.eclipse.ui.workbench;bundle-version="3.120.0",
+ org.eclipse.jface;bundle-version="3.21.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.portal.ui,
  com.aptana.portal.ui.browser,

@@ -9,8 +9,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.jface.text,
  com.aptana.core,
- org.eclipse.ui.editors
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.ui.editors,
+ org.eclipse.core.resources
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.editor.epl,
  com.aptana.editor.hover,

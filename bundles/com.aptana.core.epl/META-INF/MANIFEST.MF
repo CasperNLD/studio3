@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: com.aptana.core.epl;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ecf;visibility:=reexport,
  org.eclipse.ecf.filetransfer;visibility:=reexport,
