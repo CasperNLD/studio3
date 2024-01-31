@@ -8,3 +8,4 @@ Fragment-Host: com.aptana.browser
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Require-Bundle: org.junit;bundle-version="4.8.0"
 Export-Package: com.aptana.browser.tests
+Automatic-Module-Name: com.aptana.browser.tests

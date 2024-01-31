@@ -45,6 +45,11 @@
     <artifactId>jna-platform</artifactId>
     <version>5.14.0</version>
 </dependency>
+ <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpcore</artifactId>
+    <version>4.3.3</version>
+</dependency>
 </dependencies>
 	<build>
 		<plugins>

@@ -34,4 +34,5 @@ Export-Package: org.w3c.css.css,
  org.w3c.css.values,
  org.w3c.www.mime
 Eclipse-BuddyPolicy: registered
+Automatic-Module-Name: org.w3c.css
  

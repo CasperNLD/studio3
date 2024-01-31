@@ -4,7 +4,7 @@ Bundle-Name: HTTPCore NIO
 Bundle-SymbolicName: org.apache.httpcomponents.httpcore-nio
 Bundle-Version: 4.3.3
 Bundle-Vendor: Apache
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.apache.http.impl.nio;version="4.3.3",
  org.apache.http.impl.nio.codecs;version="4.3.3",
  org.apache.http.impl.nio.pool;version="4.3.3",

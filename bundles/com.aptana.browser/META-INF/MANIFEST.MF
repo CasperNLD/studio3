@@ -6,10 +6,12 @@ Bundle-Version: 3.0.0.qualifier
 Bundle-Activator: com.aptana.browser.BrowserPlugin
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: com.aptana.core,
- org.eclipse.ui,
- org.eclipse.ui.browser;visibility:=reexport
+ org.eclipse.ui;visibility:=reexport,
+ org.eclipse.ui.browser;visibility:=reexport,
+ org.eclipse.ui.ide;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: com.aptana.browser,
  com.aptana.browser.parts,
  com.aptana.browser.support
+Automatic-Module-Name: com.aptana.browser
