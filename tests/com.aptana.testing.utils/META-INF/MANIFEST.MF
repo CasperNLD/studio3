@@ -64,3 +64,4 @@ Export-Package: com.aptana.buildpath.core.tests;uses:="com.aptana.parsing,com.ap
    org.eclipse.core.resources",
  com.aptana.testing.utils;uses:="org.eclipse.core.runtime,org.eclipse.core.resources"
 Automatic-Module-Name: com.aptana.testing.utils
+Import-Package: com.aptana.editor.common.tests

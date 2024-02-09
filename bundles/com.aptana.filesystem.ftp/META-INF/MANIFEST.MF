@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
+Automatic-Module-Name: com.aptana.filesystem.ftp
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.aptana.filesystem.ftp;singleton:=true
 Bundle-Version: 3.0.0.qualifier

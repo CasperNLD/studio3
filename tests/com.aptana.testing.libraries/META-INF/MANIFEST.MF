@@ -6,3 +6,4 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: APTANA
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: com.aptana.testing.categories
+Automatic-Module-Name: com.aptana.testing.libraries
