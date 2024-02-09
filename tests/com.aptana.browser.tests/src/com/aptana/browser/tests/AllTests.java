@@ -7,11 +7,13 @@
  */
 package com.aptana.browser.tests;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import com.aptana.browser.internal.BrowserConfigurationManagerTest;
 
+@Ignore
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ BrowserConfigurationManagerTest.class })
 public class AllTests

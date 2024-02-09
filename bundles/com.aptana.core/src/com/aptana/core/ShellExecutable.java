@@ -54,6 +54,7 @@ public final class ShellExecutable
 			"%PROGRAMFILES(X86)%\\Git\\bin", //$NON-NLS-1$ 
 			"C:\\RailsInstaller\\Git\\bin" //$NON-NLS-1$ // Default install location of RailsInstaller's Git
 	};
+	//TODO FIX hardcoded executables
 
 	private static final String[] ENV_FILTER = new String[] { "_", //$NON-NLS-1$
 			BASH_ENV, "TMP", //$NON-NLS-1$
