@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubMonitor;
 
 import com.aptana.core.io.vfs.Policy;
@@ -118,9 +119,12 @@ public final class EFSUtils
 			URI uri = file.toURI();
 			if (uri != null)
 			{
-				return uri.getPath();
+				String pathString = uri.getPath();
+				return  Platform.getOS().equals(Platform.OS_WIN32) && pathString.startsWith("/") ? 
+						pathString.substring(1) : pathString;
 			}
 		}
+		//TODO: determine whether is required to parse all forward slashes to backward in case of platform.win32 or not?
 		return null;
 	}
 

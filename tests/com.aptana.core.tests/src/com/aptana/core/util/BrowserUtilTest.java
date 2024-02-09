@@ -31,7 +31,7 @@ public class BrowserUtilTest
 					return;
 				}
 			}
-			fail("Could not find Internet Explorer on windows platform!");
+			fail("Could not find Microsoft Edge on windows platform!");
 		}
 	}
 

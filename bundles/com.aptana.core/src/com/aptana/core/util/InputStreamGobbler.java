@@ -90,7 +90,8 @@ public class InputStreamGobbler extends Thread
 			// delete last extraneous newline
 			if (result.length() > 0)
 			{
-				result.deleteCharAt(result.length() - newLineSeparator.length());
+				result.delete(result.length() - newLineSeparator.length(), result.length());
+
 			}
 		}
 		catch (IOException e)

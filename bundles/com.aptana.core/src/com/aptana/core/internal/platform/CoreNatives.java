@@ -8,6 +8,8 @@
 package com.aptana.core.internal.platform;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Max Stepanov
@@ -108,7 +110,18 @@ public final class CoreNatives {
 	 *
 	 * @return Object[]
 	 */
-	public static final native Object[] GetProcessList();
+	public static final Object[] GetProcessList() {
+		List<Object> procesInfo = new ArrayList<>();
+		
+		ProcessHandle.current().children().forEach(e -> {
+			procesInfo.add(e.info().command());
+			procesInfo.add(Integer.valueOf((int) e.pid()));
+			int ppid = e.parent().isPresent() ? (int) e.parent().get().pid() : 0;
+			procesInfo.add(Integer.valueOf(ppid));
+		});
+		System.out.println(procesInfo.toString());
+		return procesInfo.toArray();
+	}
 
 	/**
 	 * 
@@ -116,7 +129,9 @@ public final class CoreNatives {
 	 *
 	 * @return int
 	 */
-	public static final native int GetCurrentProcessId();
+	public static final int GetCurrentProcessId() {
+		return (int) ProcessHandle.current().pid();
+	}
 
 	/**
 	 * 
@@ -124,7 +139,9 @@ public final class CoreNatives {
 	 *
 	 * @param pid
 	 */
-	public static final native void KillProcess(int pid);
+	public static final void KillProcess(int pid) {
+		ProcessHandle.of(pid).ifPresent(p -> p.destroy());
+	}
 
 	/**
 	 * 
@@ -133,6 +150,7 @@ public final class CoreNatives {
 	 * @param csidl
 	 * @return String
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native String GetSpecialFolderPath(int csidl);
 	
 	/**
@@ -145,6 +163,7 @@ public final class CoreNatives {
 	 * @param page
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean SHObjectProperties(int/*long*/ handle, int type, String object, String page);
 
 	/**
@@ -154,6 +173,7 @@ public final class CoreNatives {
 	 * @param path
 	 * @return String
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native String ExpandEnvironmentStrings(String path);
 	
 	/**
@@ -164,6 +184,7 @@ public final class CoreNatives {
 	 * @param clear
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean SetFileAttributes(String path, int set, int clear);
 
 	/**
@@ -177,6 +198,7 @@ public final class CoreNatives {
 	 * @param hKeyResult
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean RegOpenKey(long hKeyParent, String keyName, int accessMask, /*out*/long[] hKeyResult);
 
 	/**
@@ -190,6 +212,7 @@ public final class CoreNatives {
 	 * @param hKeyResult
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean RegCreateKey(long hKeyParent, String keyName, int accessMask, /*out*/long[] hKeyResult);
 
 	/**
@@ -200,6 +223,7 @@ public final class CoreNatives {
 	 * @param hKey
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean RegCloseKey(long hKey);
 
 	/**
@@ -212,6 +236,7 @@ public final class CoreNatives {
 	 * @param valueResult
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean RegQueryValue(long hKey, String valueName, /*out*/String[] valueResult);
 
 	/**
@@ -224,12 +249,14 @@ public final class CoreNatives {
 	 * @param value
 	 * @return boolean
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean RegSetValue(long hKey, String valueName, String value);
 
 	/**
 	 * IsUserAnAdmin
 	 * Tests whether the current user is a member of the Administrator's group.
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean IsUserAnAdmin();
 	
 	/**
@@ -241,6 +268,7 @@ public final class CoreNatives {
 	 * @param nShow
 	 * @return
 	 */
+	@Deprecated(since="3.0.0", forRemoval=true)  //TODO: native needs to be replaced with JNA
 	public static final native boolean ShellExecuteEx(String file, String params, String verb, String directory, int nShow);
 	// CHECKSTYLE:ON
 	

@@ -16,7 +16,8 @@ import org.junit.Test;
 
 public class SourcePrinterTest
 {
-
+	private static final String DEFAULT_NEWLINE = System.getProperty("line.separator"); //$NON-NLS-1$
+	
 	@Test
 	public void testGetIndexString()
 	{
@@ -70,7 +71,7 @@ public class SourcePrinterTest
 		SourcePrinter printer = new SourcePrinter();
 		String delimiter = "\n";
 
-		assertEquals(System.getProperty("line.separator"), printer.getLineDelimeter());
+		assertEquals(DEFAULT_NEWLINE, printer.getLineDelimeter());
 
 		printer.setLineDelimeter(delimiter);
 		assertEquals(delimiter, printer.getLineDelimeter());
@@ -101,7 +102,7 @@ public class SourcePrinterTest
 		printer.decreaseIndent();
 		printer.print("awesome!");
 
-		assertEquals("Aptana Studio\n  is\nawesome!", printer.getBuffer().toString());
+		assertEquals("Aptana Studio" + DEFAULT_NEWLINE + "  is" + DEFAULT_NEWLINE + "awesome!", printer.getBuffer().toString());
 	}
 
 	@Test
@@ -145,7 +146,7 @@ public class SourcePrinterTest
 		printer.print('b');
 		printer.println('c');
 
-		assertEquals("abc\n", printer.toString());
+		assertEquals("abc" + DEFAULT_NEWLINE, printer.toString());
 	}
 
 	@Test
@@ -165,6 +166,6 @@ public class SourcePrinterTest
 		printer.increaseIndent();
 		printer.printlnWithIndent('a');
 
-		assertEquals("  a\n", printer.toString());
+		assertEquals("  a" + DEFAULT_NEWLINE, printer.toString());
 	}
 }

@@ -39,12 +39,16 @@ public class EFSUtilsTest
 //		super.tearDown();
 	}
 
+	private String parseSeparator(String filename) {
+		return File.separator.contentEquals("\\") ? filename.replace("\\", "/") : filename;
+	}
+	
 	@Test
 	public void testGetAbsolutePath() throws IOException, CoreException
 	{
 		File f = FileUtil.createTempFile("test", "txt"); //$NON-NLS-1$ //$NON-NLS-2$
 		LocalConnectionPoint lcp = new LocalConnectionPoint(Path.fromOSString(f.getAbsolutePath()));
-		assertEquals(f.getAbsolutePath(), EFSUtils.getAbsolutePath(lcp.getRoot()));
+		assertEquals(parseSeparator(f.getAbsolutePath()), EFSUtils.getAbsolutePath(lcp.getRoot()));
 	}
 
 	@Test
@@ -52,7 +56,7 @@ public class EFSUtilsTest
 	{
 		File f = FileUtil.createTempFile("test", "txt"); //$NON-NLS-1$ //$NON-NLS-2$
 		LocalConnectionPoint lcp = new LocalConnectionPoint(Path.fromOSString(f.getAbsolutePath()));
-		assertEquals(f.getAbsolutePath(), EFSUtils.getAbsolutePath(lcp.getRoot()));
+		assertEquals(parseSeparator(f.getAbsolutePath()), EFSUtils.getAbsolutePath(lcp.getRoot()));
 	}
 
 	@Test

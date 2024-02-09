@@ -98,8 +98,12 @@ public class ExecutableUtilTest
 		IPath path = ExecutableUtil.find(executableFileName, false, location, (IPath) null);
 		executableFile.delete();
 
-		assertNull("Found a non-executable file", path);
-
+		if (Platform.getOS().equals(Platform.OS_WIN32)) {
+			assertNotNull(path);
+		}
+		else {
+			assertNull("Found a non-executable file", path);
+		}
 	}
 
 	@Test

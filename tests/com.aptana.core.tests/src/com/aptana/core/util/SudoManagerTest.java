@@ -40,6 +40,8 @@ public class SudoManagerTest
 	private Process process;
 	private ByteArrayOutputStream out;
 
+	private static final String DEFAULT_NEWLINE = System.getProperty("line.separator"); //$NON-NLS-1$
+	
 	@Before
 	public void setUp()
 	{
@@ -107,7 +109,7 @@ public class SudoManagerTest
 			}
 		});
 		assertEquals(true, sudoManager.authenticate("fake".toCharArray()));
-		assertEquals("fake\n", out.toString()); // assert we wrote password to STDIN
+		assertEquals("fake" + DEFAULT_NEWLINE, out.toString()); // assert we wrote password to STDIN
 	}
 
 	@Test(timeout=5000)
@@ -227,7 +229,7 @@ public class SudoManagerTest
 			}
 		});
 		assertEquals(true, sudoManager.authenticate("fake".toCharArray()));
-		assertEquals("fake\n", out.toString()); // assert we wrote password to STDIN
+		assertEquals("fake"+ DEFAULT_NEWLINE, out.toString()); // assert we wrote password to STDIN
 	}
 
 	@Test

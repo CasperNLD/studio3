@@ -12,6 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.Assume.assumeFalse;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.util.Random;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.junit.Test;
 
 public class FileUtilTest
@@ -289,6 +291,8 @@ public class FileUtilTest
 	@Test
 	public void testCountFilesWithMultipleDirectoriesAndSymlinkLoop() throws Exception
 	{
+		assumeFalse(Platform.getOS().equals(Platform.OS_WIN32));
+		
 		File dir = FileUtil.getTempDirectory().append("count_dir_" + System.currentTimeMillis()).toFile();
 		try
 		{

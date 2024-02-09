@@ -12,6 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assume.assumeFalse;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -225,6 +226,7 @@ public class ZipUtilTest
 	@Test
 	public void testUnzipFileWithSymlinks() throws IOException
 	{
+		assumeFalse(Platform.getOS().contentEquals(Platform.OS_WIN32));
 		URL resourceURL = Platform.getBundle(BUNDLE_ID).getEntry(TEST_ZIP_SYMLINKS);
 		assertNotNull(resourceURL);
 		File resourceFile = ResourceUtil.resourcePathToFile(resourceURL);

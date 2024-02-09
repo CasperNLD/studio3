@@ -80,7 +80,7 @@ public class ResourceUtilTest
 		URL url = Platform.getBundle("com.aptana.core.tests").getEntry("resources");
 
 		String path = ResourceUtil.resourcePathToString(url);
-		String expectedPostfix = "/resources";
+		String expectedPostfix = File.separator + "resources";
 		assertTrue(MessageFormat.format("Path ({0}) doesn''t end with expected postfix: {1}", path, expectedPostfix),
 				path.endsWith(expectedPostfix));
 	}

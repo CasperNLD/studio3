@@ -112,7 +112,7 @@ public class BrowserUtilWindows extends BrowserUtilNull
 		}
 		if (lowerName.contains("microsoft edge")) //$NON-NLS-1$
 		{
-			throw new IllegalArgumentException("TODO: find edge version");//TODO
+			return getEdgeVersion();
 		}
 
 		return null;
@@ -158,6 +158,12 @@ public class BrowserUtilWindows extends BrowserUtilNull
 	{
 		return getVersionFrom(new String[] { "Software\\Microsoft\\Internet Explorer\\", //$NON-NLS-1$
 				"Software\\WOW6432Node\\Microsoft\\Internet Explorer\\" }, "Version"); //$NON-NLS-1$ //$NON-NLS-2$
+	}
+
+	private String getEdgeVersion()
+	{
+		return getVersionFrom(new String[] { "Software\\Microsoft\\Edge\\BLBeacon\\" //$NON-NLS-1$
+				}, "version", HKEY_CURRENT_USER); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	private String getSafariVersion()

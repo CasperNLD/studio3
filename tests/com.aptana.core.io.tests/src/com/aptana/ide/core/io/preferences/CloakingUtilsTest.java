@@ -60,7 +60,7 @@ public class CloakingUtilsTest
 		file.deleteOnExit();
 		IFileStore fileStore = EFS.getLocalFileSystem().fromLocalFile(file);
 
-		String regex = "/.*\\/cloaking\\/.*txt/";
+		String regex = "/.*\\" + File.separator + "cloaking\\" + File.separator + ".*txt/";
 		CloakingUtils.addCloakFileType(regex);
 		assertTrue("the file should be cloaked but is not", CloakingUtils.isFileCloaked(fileStore));
 

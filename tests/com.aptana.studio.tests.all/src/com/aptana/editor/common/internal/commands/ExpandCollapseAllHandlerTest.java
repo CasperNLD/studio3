@@ -25,7 +25,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aptana.editor.common.outline.CommonOutlinePage;
-import com.aptana.editor.common.tests.SingleEditorTestCase;
+import com.aptana.editor.common.scripting.tests.SingleEditorTestCase;
 import com.aptana.editor.html.HTMLPlugin;
 
 public class ExpandCollapseAllHandlerTest extends SingleEditorTestCase
