@@ -1,53 +1,469 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <target name="com.aptana.studio.target" sequenceNumber="25">
-        	
+                                                                            	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <locations>
-                		
+                                                                                                                                                        		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="com.fasterxml.jackson.core.jackson-annotations" version="2.9.2.v20180207-1730"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="com.fasterxml.jackson.core.jackson-core" version="2.9.2.v20180207-1730"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="com.fasterxml.jackson.core.jackson-databind" version="2.9.2.v20180207-1730"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="org.apache.commons.lang3" version="3.1.0.v201403281430"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20180905201904/repository"/>
-                        		
+                                                                                                                                                                                                                                    		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         </location>
-                		
+                                                                                                                                                        		
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="false" type="InstallableUnit">
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="org.eclipse.platform.ide" version="4.17.0.I20200902-1800"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="org.eclipse.rcp.feature.group" version="4.17.0.v20200902-1800"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <unit id="org.eclipse.test.feature.group" version="3.7.1200.v20200828-0912"/>
-                        			
+                                                                                                                                                                                                                                    			
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <repository location="https://download.eclipse.org/eclipse/updates/4.17/"/>
-                        		
+                                                                                                                                                                                    	        
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <unit id="org.eclipse.sdk.tests.feature.group" version="4.17.0.v20200902-1800"/>
+                                                                                                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         </location>
-                	
-    
+                                                                                                        	    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <location path="C:\GitHub\libraries_com\releng\com.aptana.ide.libraries.subscription.update\target\repository" type="Directory"/>
+        	    
+        <location includeDependencyDepth="none" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
+            		    
+            <dependencies>
+                			    
+                <dependency>
+                    				    
+                    <groupId>com.aptana.studio</groupId>
+                    				    
+                    <artifactId>org.w3c.css</artifactId>
+                    				    
+                    <version>1.0.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                		    
+            </dependencies>
+            	    
+        </location>
+        	    
+        <location includeDependencyDepth="none" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
+            		    
+            <dependencies>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.opentest4j</groupId>
+                    				    
+                    <artifactId>opentest4j</artifactId>
+                    				    
+                    <version>1.3.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                		    
+            </dependencies>
+            	    
+        </location>
+        	    
+        <location includeDependencyDepth="none" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
+            		    
+            <dependencies>
+                			    
+                <dependency>
+                    				    
+                    <groupId>cglib</groupId>
+                    				    
+                    <artifactId>cglib-nodep</artifactId>
+                    				    
+                    <version>3.3.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.apache-extras.beanshell</groupId>
+                    				    
+                    <artifactId>bsh</artifactId>
+                    				    
+                    <version>2.0b6</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.hamcrest</groupId>
+                    				    
+                    <artifactId>hamcrest</artifactId>
+                    				    
+                    <version>2.2</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.hamcrest</groupId>
+                    				    
+                    <artifactId>hamcrest</artifactId>
+                    				    
+                    <version>2.2</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.jmock</groupId>
+                    				    
+                    <artifactId>jmock-junit4</artifactId>
+                    				    
+                    <version>2.12.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.jmock</groupId>
+                    				    
+                    <artifactId>jmock-legacy</artifactId>
+                    				    
+                    <version>2.12.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                			    
+                <dependency>
+                    				    
+                    <groupId>org.jmock</groupId>
+                    				    
+                    <artifactId>jmock</artifactId>
+                    				    
+                    <version>2.12.0</version>
+                    				    
+                    <type>jar</type>
+                    			    
+                </dependency>
+                		    
+            </dependencies>
+            	    
+        </location>
+            
     </locations>
-        	
+                                                                            	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
-        
+                        
+
+
+
+
 
 </target>
