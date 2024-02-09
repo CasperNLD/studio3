@@ -132,8 +132,8 @@ public class DefaultAnalyticsEventHandler implements IAnalyticsEventHandler
 
 		try
 		{
-			URL url = new URL(getAnalyticsURL());
-			connection = createConnection(url);
+			//URL url = new URL(getAnalyticsURL());
+			/*connection = createConnection(url);
 			if (user != null)
 			{
 				connection.setRequestProperty("Cookie", user.getCookie() + "; uid=" + user.getGUID()); //$NON-NLS-1$ //$NON-NLS-2$
@@ -164,7 +164,8 @@ public class DefaultAnalyticsEventHandler implements IAnalyticsEventHandler
 						Integer.toString(code)));
 			}
 
-			return code;
+			return code;*/
+			throw new IOException("no connection allowed");  //nu analyses
 		}
 		catch (Exception e)
 		{

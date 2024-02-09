@@ -56,8 +56,8 @@ public class UsagePlugin extends Plugin
 	{
 		super.start(context);
 		plugin = this;
-		job = new SendPingJob();
-		job.schedule();
+		//job = new SendPingJob();
+		//job.schedule();
 	}
 
 	/*
