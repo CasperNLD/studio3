@@ -14,8 +14,11 @@ import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.text.MessageFormat;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.Platform;
 import org.junit.Test;
@@ -29,87 +32,68 @@ import com.aptana.core.util.PlatformUtil.ProcessItem;
 public class PlatformUtilTest
 {
 
+	private static String COMSPEC = System.getenv("ComSpec");
 	@Test
 	public void testGetRunningProcesses()
 	{
 		ProcessItem[] processes = PlatformUtil.getRunningProcesses();
 		assertTrue(processes.length > 0);
-		for (ProcessItem i : processes)
-		{
-			assertTrue(i.getPid() > 0);
-			assertTrue(i.getExecutableName().trim().length() > 0);
-			assertNotNull(i.toString());
-		}
+		
+		String myname = ProcessHandle.current().info().command().get();
+		long pid = ProcessHandle.current().pid();
+		assertTrue(Stream.of(processes).anyMatch(p -> p.getPid() == pid && p.getExecutableName().contentEquals(myname)));
 	}
 
 	@Test
 	public void testGetRunningChildProcesses() throws IOException
 	{
-		String cmd = Platform.OS_WIN32.equals(Platform.getOS()) ? "cmd.exe" : (Platform.OS_MACOSX.equals(Platform
+		String cmd = Platform.OS_WIN32.equals(Platform.getOS()) ? COMSPEC : (Platform.OS_MACOSX.equals(Platform
 				.getOS()) ? "sleep 5s" : "sh");
-		String[] command = Platform.OS_WIN32.equals(Platform.getOS()) ? new String[] { "cmd.exe", "/C", "sleep 5s" }
+		String[] command = Platform.OS_WIN32.equals(Platform.getOS()) ? new String[] { COMSPEC, "/C", "ping -n 10 127.0.0.1" }
 				: new String[] { "sh", "-c", "sleep 5s" };
 		ProcessBuilder processBuilder = new ProcessBuilder(command);
+		processBuilder.redirectError(Redirect.INHERIT);
 		processBuilder.start();
 		ProcessItem[] processes = PlatformUtil.getRunningChildProcesses();
 		assertTrue(processes.length > 0);
-		boolean passed = false;
-		for (ProcessItem i : processes)
+		
+		boolean passed = Stream.of(processes).anyMatch(i ->
 		{
 			String lowerCaseProcessName = i.getExecutableName().toLowerCase();
-			if (passed = lowerCaseProcessName.endsWith(cmd))
+			if (lowerCaseProcessName.equalsIgnoreCase(cmd))
 			{
-				break;
+				return true;
 			}
 			// Sometimes linux shows "[sh]" as process name
 			if ("sh".equals(cmd))
 			{
-				if (passed = lowerCaseProcessName.endsWith("[sh]"))
+				if (lowerCaseProcessName.endsWith("[sh]"))
 				{
-					break;
+					return true;
 				}
 			}
-		}
+			return false;
+		});
 		assertTrue("Expected child process \"" + cmd + "\" not found in " + Arrays.asList(processes).toString(), passed);
 	}
 
 	@Test
 	public void testKillProcesses() throws IOException
 	{
-		String cmd = Platform.OS_WIN32.equals(Platform.getOS()) ? "cmd.exe" : (Platform.OS_MACOSX.equals(Platform
+		String cmd = Platform.OS_WIN32.equals(Platform.getOS()) ? COMSPEC : (Platform.OS_MACOSX.equals(Platform
 				.getOS()) ? "sleep 5s" : "sh");
-		String[] command = Platform.OS_WIN32.equals(Platform.getOS()) ? new String[] { "cmd.exe", "/C", "sleep 5s" }
+		String[] command = Platform.OS_WIN32.equals(Platform.getOS()) ? new String[] { COMSPEC, "/C", "ping -n 10 127.0.0.1" }
 				: new String[] { "sh", "-c", "sleep 5s" };
 		ProcessBuilder processBuilder = new ProcessBuilder(command);
-		processBuilder.start();
+		processBuilder.redirectError(Redirect.INHERIT);
+		Process process = processBuilder.start();
 		ProcessItem[] processes = PlatformUtil.getRunningChildProcesses();
 		assertTrue(processes.length > 0);
-		int pid = 0;
 
-		for (ProcessItem i : processes)
-		{
-			String lowerCaseProcessName = i.getExecutableName().toLowerCase();
-			if (lowerCaseProcessName.endsWith(cmd))
-			{
-				pid = i.getPid();
-				break;
-			}
-			// Sometimes linux shows "[sh]" as process name
-			if ("sh".equals(cmd) && lowerCaseProcessName.endsWith("[sh]"))
-			{
-				pid = i.getPid();
-				break;
-			}
-		}
-		assertTrue("Expected child process \"" + cmd + "\" not found in " + Arrays.asList(processes).toString(),
-				pid > 0);
-		PlatformUtil.killProcess(pid);
+		PlatformUtil.killProcess((int) process.pid());
 		processes = PlatformUtil.getRunningChildProcesses();
-		for (ProcessItem i : processes)
-		{
-			assertNotSame(MessageFormat.format("Expected process {0} did not terminate on kill command", cmd), pid,
-					i.getPid());
-		}
+		assertTrue("Expected process did not terminate on kill command",Stream.of(processes).noneMatch(i ->
+			i.getPid() == process.pid()));
 	}
 
 	@Test

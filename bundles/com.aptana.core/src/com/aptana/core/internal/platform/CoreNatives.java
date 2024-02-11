@@ -107,22 +107,22 @@ public final class CoreNatives {
 	/**
 	 * 
 	 * GetProcessList
+	 * Get a list of all visible processes
 	 *
 	 * @return Object[]
 	 */
 	public static final Object[] GetProcessList() {
+
 		List<Object> procesInfo = new ArrayList<>();
 		
-		ProcessHandle.current().children().forEach(e -> {
-			procesInfo.add(e.info().command());
-			procesInfo.add(Integer.valueOf((int) e.pid()));
-			int ppid = e.parent().isPresent() ? (int) e.parent().get().pid() : 0;
-			procesInfo.add(Integer.valueOf(ppid));
+		ProcessHandle.allProcesses().forEach(p -> {
+			procesInfo.add(p.info().command().isPresent() ? p.info().command().get() : "");
+			procesInfo.add(Integer.valueOf((int) p.pid()));
+			procesInfo.add(Integer.valueOf(p.parent().isPresent() ? (int) p.parent().get().pid() : 0));
 		});
-		System.out.println(procesInfo.toString());
 		return procesInfo.toArray();
 	}
-
+	
 	/**
 	 * 
 	 * GetCurrentProcessId
