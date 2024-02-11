@@ -7,10 +7,12 @@
  */
 package com.aptana.editor.html;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+@Ignore("Ignoring Suite tests, see other remarks")
 @RunWith(Suite.class)
 // @formatter:off
 @SuiteClasses({

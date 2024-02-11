@@ -26,6 +26,8 @@ import com.aptana.js.core.IJSConstants;
 
 public class HTMLParseErrorValidatorTest extends AbstractValidatorTestCase
 {
+	private static final String DEFAULT_NEWLINE = System.getProperty("line.separator"); //$NON-NLS-1$
+	
 	@Override
 	protected IBuildParticipant createValidator()
 	{
@@ -148,8 +150,10 @@ public class HTMLParseErrorValidatorTest extends AbstractValidatorTestCase
 		IProblem item = jsProblems.get(0);
 
 		assertEquals("Error was not found on expected line", 2, item.getLineNumber());
-		assertEquals("Error message did not match expected error message", "SyntaxError:4:0 Expected an operand but found }\n" + 
-				"};\n" + 
+		assertEquals("Error message did not match expected error message", "SyntaxError:4:0 Expected an operand but found }" +
+				DEFAULT_NEWLINE + 
+				"};" + 
+				DEFAULT_NEWLINE + 				
 				"^",
 				item.getMessage());
 	}

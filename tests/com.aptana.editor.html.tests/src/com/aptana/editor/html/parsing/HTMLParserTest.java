@@ -62,7 +62,7 @@ public class HTMLParserTest
 	public void testSelfClosing() throws Exception
 	{
 		String source = "<html/>";
-		parseTest(source, "<html></html>\n");
+		parseTest(source, "<html></html>" + EOL);
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class HTMLParserTest
 	{
 		String source = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">"
 				+ "<html><head></head><body><p>Text</html>";
-		parseTest(source, "<html><head></head><body><p>Text</p></body></html>\n");
+		parseTest(source, "<html><head></head><body><p>Text</p></body></html>" + EOL);
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class HTMLParserTest
 	{
 		String source = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n"
 				+ "\"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">" + "<body><br /><table></table></body>";
-		parseTest(source, "<body><br></br><table></table></body>\n");
+		parseTest(source, "<body><br></br><table></table></body>" + EOL);
 	}
 
 	@Test
@@ -157,7 +157,7 @@ public class HTMLParserTest
 	public void testNestedUnclosedTag() throws Exception
 	{
 		String source = "<p><b></b><p>";
-		parseTest(source, "<p><b></b></p>\n<p></p>" + EOL);
+		parseTest(source, "<p><b></b></p>" + EOL + "<p></p>" + EOL);
 	}
 
 	@Test
@@ -402,7 +402,7 @@ public class HTMLParserTest
 		IParseNode[] children = result.getChildren();
 		for (IParseNode child : children)
 		{
-			text.append(child).append("\n");
+			text.append(child).append(EOL);
 		}
 		assertEquals(expected, text.toString());
 	}
