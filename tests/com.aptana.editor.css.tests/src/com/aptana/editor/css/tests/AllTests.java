@@ -7,6 +7,7 @@
  */
 package com.aptana.editor.css.tests;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -17,6 +18,7 @@ import com.aptana.editor.css.CSSEditorTest;
 import com.aptana.editor.css.CSSSourcePartitionScannerFlexTest;
 import com.aptana.editor.css.internal.text.CSSFoldingComputerTest;
 
+@Ignore("Suite tests not working properly, but the Test will run in Maven anyway")
 @RunWith(Suite.class)
 //@formatter:off
 @SuiteClasses({

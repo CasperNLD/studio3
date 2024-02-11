@@ -7,6 +7,7 @@
  */
 package com.aptana.editor.html.tests;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
@@ -15,6 +16,7 @@ import com.aptana.editor.html.contentassist.index.HTMLFileIndexingParticipantTes
 import com.aptana.editor.html.internal.build.HTMLTaskDetectorTest;
 import com.aptana.editor.html.validator.ValidatorTests;
 
+@Ignore("No Suite tests work at the moment, but Maven will test everything anyway")
 @RunWith(Suite.class)
 //@formatter:off
 @SuiteClasses({
