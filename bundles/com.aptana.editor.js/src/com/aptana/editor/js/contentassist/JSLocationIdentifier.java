@@ -972,7 +972,7 @@ public class JSLocationIdentifier extends JSTreeWalker
 			Symbol colon = node.getColon();
 			IParseNode block = node.getBlock();
 
-			if (this._offset < colon.getStart())
+			if (colon != null && this._offset < colon.getStart())
 			{
 				this.setType(LocationType.IN_LABEL);
 			}
