@@ -236,10 +236,11 @@ public class JSFormatter extends AbstractScriptFormatter implements IScriptForma
 	{
 		String originalText = source.substring(offset, offset + length);
 		String input = leftTrim(originalText, 0);
-		if (indentationLevel > 0 && FormatterWriter.endsWithNewLine(input, lineSeparator))
+		String lineDelimiterFile = detectLineEnding(input);
+		if (indentationLevel > 0 && FormatterWriter.endsWithNewLine(input, lineDelimiterFile))
 		{
-			String substring = input.substring(0, input.length() - lineSeparator.length());
-			if (!FormatterWriter.endsWithNewLine(substring, lineSeparator))
+			String substring = input.substring(0, input.length() - 1);
+			if (!FormatterWriter.endsWithNewLine(substring, lineDelimiterFile))
 			{
 				input = substring;
 			}
@@ -299,6 +300,10 @@ public class JSFormatter extends AbstractScriptFormatter implements IScriptForma
 			IdeLog.logError(JSFormatterPlugin.getDefault(), e, IDebugScopes.DEBUG);
 		}
 		return null;
+	}
+
+	private String detectLineEnding(String input)	{
+		return input.matches(".*\r\n.*") && !input.matches("(?<!\r)\n") ? "\r\n" : "\n";
 	}
 
 	/**
@@ -422,6 +427,7 @@ public class JSFormatter extends AbstractScriptFormatter implements IScriptForma
 		IFormatterContainerNode root = builder.build(parseResult, document);
 		new JSFormatterNodeRewriter(parseResult, document).rewrite(root);
 		IFormatterContext context = new JSFormatterContext(indentationLevel);
+		
 		FormatterWriter writer = new FormatterWriter(document, lineSeparator, createIndentGenerator());
 		writer.setWrapLength(getInt(WRAP_COMMENTS_LENGTH));
 		writer.setLinesPreserve(getInt(PRESERVED_LINES));
