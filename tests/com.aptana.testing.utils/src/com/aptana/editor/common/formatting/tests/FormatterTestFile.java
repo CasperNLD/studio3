@@ -63,7 +63,8 @@ public class FormatterTestFile
 		{
 			e.printStackTrace();
 		}
-		this.formatter = factory.createFormatter(System.getProperty("line.separator"), prefs); //$NON-NLS-1$
+		String lineDelimiter = content.toString().matches(".*\r\n.*") ? "\r\n" : "\n";
+		this.formatter = factory.createFormatter(lineDelimiter, prefs); //$NON-NLS-1$
 	}
 
 	private void parseFile() throws IOException
