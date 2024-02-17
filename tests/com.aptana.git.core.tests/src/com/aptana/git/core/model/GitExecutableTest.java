@@ -40,6 +40,7 @@ import org.junit.Test;
 import org.osgi.framework.Version;
 
 import com.aptana.core.util.FileUtil;
+import com.aptana.core.util.PlatformUtil;
 import com.aptana.core.util.ProcessStatus;
 import com.aptana.git.core.GitPlugin;
 import com.aptana.git.core.IPreferenceConstants;
@@ -47,10 +48,6 @@ import com.aptana.git.core.IPreferenceConstants;
 @SuppressWarnings("nls")
 public class GitExecutableTest
 {
-	// FIXME This certainly won't work on Windows!
-	private static final String FAKE_GIT_1_5 = "test_files/fake_git_1.5.sh";
-	private static final String FAKE_GIT_1_6 = "test_files/fake_git_1.6.sh";
-
 	private Mockery context;
 
 	@Before
@@ -74,15 +71,19 @@ public class GitExecutableTest
 		prefs.flush();
 		context = null;
 	}
+	
+	private static String getExtension() {
+		return PlatformUtil.isWindows() ? ".cmd" : ".sh";
+	}
 
 	@Test
 	public void testAcceptBinary() throws Exception
 	{
-		URL url = makeURLForExecutableFile(new Path(FAKE_GIT_1_5));
+		URL url = makeURLForExecutableFile(new Path("test_files/fake_git_1.5" + getExtension()));
 
 		assertFalse(GitExecutable.acceptBinary(Path.fromOSString(url.getPath())));
 
-		url = makeURLForExecutableFile(new Path(FAKE_GIT_1_6));
+		url = makeURLForExecutableFile(new Path("test_files/fake_git_1.6" + getExtension()));
 		assertTrue(GitExecutable.acceptBinary(Path.fromOSString(url.getPath())));
 	}
 
@@ -113,7 +114,7 @@ public class GitExecutableTest
 	@Test
 	public void testUsesPrefLocationFirst() throws Throwable
 	{
-		URL url = makeURLForExecutableFile(new Path(FAKE_GIT_1_6));
+		URL url = makeURLForExecutableFile(new Path("test_files/fake_git_1.6" + getExtension()));
 
 		IEclipsePreferences prefs = InstanceScope.INSTANCE.getNode(GitPlugin.getPluginId());
 		prefs.put(IPreferenceConstants.GIT_EXECUTABLE_PATH, url.getPath());
@@ -318,7 +319,7 @@ public class GitExecutableTest
 	@Test
 	public void testAPSTUD4596() throws Throwable
 	{
-		URL url = makeURLForExecutableFile(new Path("test_files/apstud4596_git.sh"));
+		URL url = makeURLForExecutableFile(new Path("test_files/apstud4596_git" + getExtension()));
 
 		IPath path = Path.fromOSString(url.getPath());
 		assertTrue(GitExecutable.acceptBinary(path));
@@ -330,7 +331,7 @@ public class GitExecutableTest
 	@Test
 	public void testMsysgitVersionString() throws Throwable
 	{
-		URL url = makeURLForExecutableFile(new Path("test_files/msysgit.sh"));
+		URL url = makeURLForExecutableFile(new Path("test_files/msysgit" + getExtension()));
 
 		IPath path = Path.fromOSString(url.getPath());
 		assertTrue(GitExecutable.acceptBinary(path));
@@ -342,7 +343,7 @@ public class GitExecutableTest
 	@Test
 	public void testMsysgitVersionStringWithTooManySegments() throws Throwable
 	{
-		URL url = makeURLForExecutableFile(new Path("test_files/1.7.7.5.msysgit.0.sh"));
+		URL url = makeURLForExecutableFile(new Path("test_files/1.7.7.5.msysgit.0" + getExtension()));
 
 		IPath path = Path.fromOSString(url.getPath());
 		assertTrue(GitExecutable.acceptBinary(path));
