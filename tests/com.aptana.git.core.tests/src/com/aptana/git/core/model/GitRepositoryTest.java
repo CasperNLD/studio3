@@ -352,8 +352,8 @@ public class GitRepositoryTest extends GitTestCase
 
 		int size = eventsReceived.size();
 		assertTrue("Expected git repo events, but got none", size > 0);
-		assertBranchChangedEvent(new ArrayList<RepositoryEvent>(eventsReceived), "master", "my_new_branch");
-		assertBranchChangedEvent(new ArrayList<RepositoryEvent>(eventsReceived), "my_new_branch", "master");
+		assertBranchChangedEvent(new ArrayList<RepositoryEvent>(eventsReceived), getProductionBranchName(), "my_new_branch");
+		assertBranchChangedEvent(new ArrayList<RepositoryEvent>(eventsReceived), "my_new_branch", getProductionBranchName());
 
 		getRepo().removeListener(listener);
 		// Do some things that should send events and make sure we don't get any more.
@@ -385,18 +385,18 @@ public class GitRepositoryTest extends GitTestCase
 		// Must be at least one file for us to be able to get branches and add them properly!
 		testAddFileStageUnstageAndCommit();
 
-		// Make sure we just have master branch
+		// Make sure we just have master/main branch
 		Set<String> branches = getRepo().allBranches();
 		assertEquals("Should only have one branch: " + branches.toString(), 1, branches.size());
-		assertTrue(branches.contains("master"));
+		assertTrue(branches.contains("master") || branches.contains("main"));
 
-		// Create a new branch off master
-		assertCreateBranch("my_new_branch", false, "master");
+		// Create a new branch off master/main
+		assertCreateBranch("my_new_branch", false, getProductionBranchName());
 
 		// make sure the branch is listed in model
 		branches = getRepo().allBranches();
 		assertEquals("Should have one new branch: " + branches.toString(), 2, branches.size());
-		assertTrue(branches.contains("master"));
+		assertTrue(branches.contains("master") || branches.contains("main"));
 		assertTrue(branches.contains("my_new_branch"));
 
 		// TODO Add tests for creating tracking branches!
@@ -413,7 +413,7 @@ public class GitRepositoryTest extends GitTestCase
 		// make sure the branch is no longer listed in model
 		Set<String> branches = getRepo().allBranches();
 		assertEquals(1, branches.size());
-		assertTrue(branches.contains("master"));
+		assertTrue(branches.contains(getProductionBranchName()));
 		assertFalse(branches.contains("my_new_branch"));
 	}
 
@@ -422,9 +422,20 @@ public class GitRepositoryTest extends GitTestCase
 	{
 		testAddBranch();
 
-		assertCurrentBranch("master");
+		assertCurrentBranch(getProductionBranchName());
 		assertSwitchBranch("my_new_branch");
-		assertSwitchBranch("master");
+		assertSwitchBranch(getProductionBranchName());
+	}
+
+	private String getProductionBranchName() throws Exception
+	{
+		if (!hasRepo()) {
+			return "";
+		}
+		if (getRepo().allBranches().contains("main")) {
+			return "main";
+		}
+		return "master";
 	}
 
 	@Test
@@ -432,7 +443,7 @@ public class GitRepositoryTest extends GitTestCase
 	{
 		testAddBranch();
 
-		assertCurrentBranch("master");
+		assertCurrentBranch(getProductionBranchName());
 		assertSwitchBranch("my_new_branch");
 
 		GitIndex index = getRepo().index();
@@ -468,7 +479,7 @@ public class GitRepositoryTest extends GitTestCase
 
 		assertCommit(index, "Initial commit");
 
-		assertSwitchBranch("master");
+		assertSwitchBranch(getProductionBranchName());
 
 		// Assert that the new project is closed!
 		project = workspace.getRoot().getProject(projectName);
@@ -514,7 +525,7 @@ public class GitRepositoryTest extends GitTestCase
 		assertCommit(index, "Initial commit");
 
 		// Now switch to master
-		assertSwitchBranch("master");
+		assertSwitchBranch(getProductionBranchName());
 
 		IStatus status = getRepo().deleteBranch("my_new_branch");
 		assertFalse("Deleting an umerged branch didn't return an error status (as it should)", status.isOK());
@@ -548,9 +559,9 @@ public class GitRepositoryTest extends GitTestCase
 		testAddFileStageUnstageAndCommit();
 		GitRepository repo = getRepo();
 
-		assertCurrentBranch("master");
-		assertNull("Expected to get no matching remote branch for 'master', but did",
-				repo.matchingRemoteBranch("master"));
+		assertCurrentBranch(getProductionBranchName());
+		assertNull("Expected to get no matching remote branch for the production branch, but did",
+				repo.matchingRemoteBranch(getProductionBranchName()));
 
 		// @formatter:off
 		String configContents =
@@ -560,9 +571,9 @@ public class GitRepositoryTest extends GitTestCase
 				"[remote \"upstream\"]\n" +
 				"\turl = git@github.com:aptana/upstream.git\n" +
 				"\tfetch = +refs/heads/*:refs/remotes/upstream/*\n" +
-				"[branch \"master\"]\n" +
+				"[branch \"" + getProductionBranchName() + "\"]\n" +
 		        "\tremote = origin\n" +
-		        "\tmerge = refs/heads/master\n" +
+		        "\tmerge = refs/heads/" + getProductionBranchName() + "\n" +
 		        "\trebase = true\n";
         // @formatter:on
 
@@ -573,8 +584,8 @@ public class GitRepositoryTest extends GitTestCase
 		writer.append(configContents);
 		writer.close();
 
-		assertEquals("Expected to get matching remote branch for 'master'",
-				GitRef.refFromString(GitRef.REFS_REMOTES + "origin/master"), repo.matchingRemoteBranch("master"));
+		assertEquals("Expected to get matching remote branch for '" + getProductionBranchName() + "'",
+				GitRef.refFromString(GitRef.REFS_REMOTES + "origin/" + getProductionBranchName()), repo.matchingRemoteBranch(getProductionBranchName()));
 	}
 
 	@Test
@@ -584,18 +595,18 @@ public class GitRepositoryTest extends GitTestCase
 		testAddFileStageUnstageAndCommit();
 		GitRepository repo = getRepo();
 
-		assertCurrentBranch("master");
-		assertNull("Expected to get no matching remote branch for 'master', but did",
-				repo.matchingRemoteBranch("master"));
+		assertCurrentBranch(getProductionBranchName());
+		assertNull("Expected to get no matching remote branch for '" + getProductionBranchName() + "', but did",
+				repo.matchingRemoteBranch(getProductionBranchName()));
 
 		// Grab HEAD SHA
 		File masterSHA = repo.workingDirectory().append(GitRepository.GIT_DIR).append("refs").append("heads")
-				.append("master").toFile();
+				.append(getProductionBranchName()).toFile();
 		String sha = IOUtil.read(new FileInputStream(masterSHA));
 
 		// Write that SHA to the remotes/origin/master ref
 		File ref = repo.workingDirectory().append(GitRepository.GIT_DIR).append("refs").append("remotes")
-				.append("origin").append("master").toFile();
+				.append("origin").append(getProductionBranchName()).toFile();
 		ref.getParentFile().mkdirs();
 		FileWriter writer = new FileWriter(ref, true);
 		writer.append(sha);
@@ -605,8 +616,8 @@ public class GitRepositoryTest extends GitTestCase
 		repo.lazyReload();
 
 		// Now make sure we try implicit tracking
-		assertEquals("Expected to get matching remote branch for 'master'",
-				GitRef.refFromString(GitRef.REFS_REMOTES + "origin/master"), repo.matchingRemoteBranch("master"));
+		assertEquals("Expected to get matching remote branch for '" + getProductionBranchName() +"'",
+				GitRef.refFromString(GitRef.REFS_REMOTES + "origin/" + getProductionBranchName()), repo.matchingRemoteBranch(getProductionBranchName()));
 	}
 
 	@Test

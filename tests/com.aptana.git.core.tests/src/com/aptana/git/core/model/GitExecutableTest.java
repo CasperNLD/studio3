@@ -128,7 +128,8 @@ public class GitExecutableTest
 	public void testDetectsInStandardLocation() throws Throwable
 	{
 		GitExecutable executable = GitExecutable.instance();
-		IPath expectedLocation = Path.fromOSString("/usr/bin/git");
+		// added the standard windows path, but I really question the effectiveness of this test
+		IPath expectedLocation = PlatformUtil.isWindows() ? Path.fromOSString("C:\\Program Files\\Git\\cmd\\git.exe") : Path.fromOSString("/usr/bin/git");
 		IPath local = Path.fromOSString("/usr/local/bin/git");
 		if (local.toFile().exists())
 		{

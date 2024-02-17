@@ -683,15 +683,15 @@ public class GitMoveDeleteHookTest
 			}
 		};
 		final IProjectDescription description = ResourcesPlugin.getWorkspace().newProjectDescription("newName");
-		description.setLocation(Path.fromPortableString("/some/root/newName"));
+		description.setLocation(Path.fromPortableString("some/root/newName"));
 		context.checking(new Expectations()
 		{
 			{
 				oneOf(repo).workingDirectory();
-				will(returnValue(Path.fromPortableString("/some/root")));
+				will(returnValue(Path.fromPortableString("some/root")));
 
 				oneOf(project).getLocation();
-				will(returnValue(Path.fromPortableString("/some/root/project")));
+				will(returnValue(Path.fromPortableString("some/root/project")));
 
 				// Verify we NEVER remove our git support
 				never(repoManager).removeRepository(project);

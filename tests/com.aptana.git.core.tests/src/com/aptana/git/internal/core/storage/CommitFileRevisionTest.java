@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Path;
 import org.junit.Test;
 
 import com.aptana.core.util.IOUtil;
+import com.aptana.core.util.PlatformUtil;
 import com.aptana.git.core.model.ChangedFile;
 import com.aptana.git.core.model.GitCommit;
 import com.aptana.git.core.model.GitIndex;
@@ -64,7 +65,10 @@ public class CommitFileRevisionTest extends GitTestCase
 		assertEquals(filename, revision.getName());
 		assertFalse(revision.isPropertyMissing());
 		assertSame(revision, revision.withAllProperties(null));
-		assertEquals(repo.workingDirectory().append(filename).toPortableString(), revision.getURI().getPath());
+		String pathStringUri =  revision.getURI().getPath();
+		String pathString =	PlatformUtil.isWindows() && pathStringUri.startsWith("/") ? 
+				pathStringUri.substring(1) : pathStringUri;
+		assertEquals(repo.workingDirectory().append(filename).toPortableString(), pathString);
 		IStorage storage = revision.getStorage(new NullProgressMonitor());
 		assertEquals(contents, IOUtil.read(storage.getContents()));
 	}

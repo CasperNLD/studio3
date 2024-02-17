@@ -62,6 +62,11 @@ public abstract class GitTestCase
 		return fRepo;
 	}
 
+	protected synchronized boolean hasRepo()
+	{
+		return fRepo != null;
+	}
+
 	protected GitRepository createRepo() throws Exception
 	{
 		return createRepo(repoToGenerate());
