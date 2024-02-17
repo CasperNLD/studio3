@@ -7,10 +7,12 @@
  */
 package com.aptana.editor.js.formatter.tests;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+@Ignore("all Suite tests are not functioning properly and Maven does run every test anyways.")
 @RunWith(Suite.class)
 //@formatter:off
 @SuiteClasses({

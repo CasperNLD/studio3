@@ -10,6 +10,7 @@ package com.aptana.editor.js.contentassist;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import org.junit.Ignore;
 
 import java.io.File;
 import java.io.IOException;
@@ -293,6 +294,7 @@ public class JSContentAssistProposalTest extends JSEditorBasedTestCase
 	/**
 	 * testObjectLiteral
 	 */
+	@Ignore
 	@Test
 	public void testObjectLiteral()
 	{

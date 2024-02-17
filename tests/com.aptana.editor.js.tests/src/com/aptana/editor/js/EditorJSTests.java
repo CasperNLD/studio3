@@ -7,10 +7,12 @@
  */
 package com.aptana.editor.js;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+@Ignore("Suite test do not work properly")
 @RunWith(Suite.class)
 @SuiteClasses({ JSSourceEditorTest.class, })
 public class EditorJSTests

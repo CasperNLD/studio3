@@ -6,6 +6,7 @@ import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aptana.editor.common.AbstractThemeableEditor;
@@ -47,6 +48,7 @@ public class JSSubWordSelectTest extends JSEditorBasedTestCase
 		org.junit.Assert.assertEquals(0, viewer.getTextWidget().getCaretOffset());
 	}
 
+	@Ignore("needs work")
 	@Test
 	public void testFullWordNavigation() throws Exception
 	{

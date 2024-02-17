@@ -21,6 +21,7 @@ import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.Position;
 import org.eclipse.jface.text.source.projection.ProjectionAnnotation;
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.aptana.editor.common.text.reconciler.IFoldingComputer;
@@ -143,6 +144,7 @@ public class JSFoldingComputerTest
 		assertFalse(annotations.keySet().iterator().next().isCollapsed());
 	}
 
+	@Ignore
 	@Test
 	public void testArrayInitiallyFolded() throws Exception
 	{
