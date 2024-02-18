@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
+Automatic-Module-Name: com.aptana.git.ui.tests
 Bundle-Name: %pluginName
 Bundle-SymbolicName: com.aptana.git.ui.tests
 Bundle-Version: 1.0.0.qualifier
